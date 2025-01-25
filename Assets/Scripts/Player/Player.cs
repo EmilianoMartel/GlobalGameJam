@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private int _currentCharisma;
     private int _currentAngry;
 
+    public Action startGame;
     public Action<int> bubblesChangeEvent;
     public Action<int> charismaChangeEvent;
     public Action<int> angryChangeEvent;
@@ -30,6 +31,14 @@ public class Player : MonoBehaviour
         _currentBubbles = _maxBubbles;
         _currentCharisma = _startCharisma;
         _currentAngry = _startAngry;
+        bubblesChangeEvent?.Invoke(_currentBubbles);
+        angryChangeEvent?.Invoke(_currentAngry);
+        charismaChangeEvent?.Invoke(_currentCharisma);
+    }
+
+    public void HandleStartGame()
+    {
+        startGame?.Invoke();
     }
 
     public void IncrementBubble()

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class FlowManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private string playId = "Play";
     [SerializeField] private string exitId = "Exit";

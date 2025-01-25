@@ -9,7 +9,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private TMP_Text _charismaText;
     [SerializeField] private TMP_Text _angryText;
-    [SerializeField] private List<Image> _bubbleList;
+    [SerializeField] private List<BubbleUI> _bubbleList;
 
     private void OnEnable()
     {
@@ -32,10 +32,15 @@ public class PlayerUI : MonoBehaviour
 
     private void HandleChangeBubble(int count)
     {
-        if (_bubbleList.Count > count + 1 || count < 0)
-            return;
-
-        _bubbleList[count + 1].gameObject.SetActive(false);
+        Debug.Log(count);
+        //CHECK BUG
+        for (int i = 0; i < _bubbleList.Count; i++)
+        {
+            if (i == count)
+            {
+                _bubbleList[i].DesactivateBubble();
+            }
+        }
     }
 
     private void HandleAngry(int count)

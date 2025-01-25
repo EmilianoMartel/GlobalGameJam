@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerView : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer _playerView;
     [SerializeField] private Animator _animator;
     [SerializeField] private Player _player;
 
@@ -13,17 +14,25 @@ public class PlayerView : MonoBehaviour
     
     private void OnEnable()
     {
-        
+        _player.deathEvent += HandleDying;
+        _player.startGame += HandleShowView;
     }
 
     private void OnDisable()
     {
-        
+        _player.deathEvent -= HandleDying;
+        _player.startGame -= HandleShowView;
     }
 
     private void Awake()
     {
+        _playerView.enabled = false;
         ValidateLogic();
+    }
+
+    private void HandleShowView()
+    {
+        _playerView.enabled = true;
     }
 
     private void HandleWalking(bool isWalking)

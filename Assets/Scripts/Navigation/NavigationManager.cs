@@ -7,7 +7,7 @@ public class NavigationManager : MonoBehaviour
     [Tooltip("First menu in the list is the default one :)")]
     [SerializeField] private List<MenuDataSource> _menusWithId;
 
-    [SerializeField] private FlowManager _gameManager;
+    [SerializeField] private GameManager _gameManager;
 
     [SerializeField] private MenuDataSource _finalScreenId;
 
