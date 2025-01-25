@@ -16,11 +16,10 @@ public class FlowManager : MonoBehaviour
     // Configs
     private int _playerInitialBubbles;
     private int _daysToWin;
-    private List<Action> _actions;
+    private List<DayAction> _actions;
     private List<Dialog> _dialogs;
 
-    // TODO: Commented because of compiler error
-    //public event Action startGame;
+    public event Action startGame;
 
     public void HandleSpecialEvents(string id)
     {
@@ -39,13 +38,14 @@ public class FlowManager : MonoBehaviour
     [ContextMenu("Start")]
     private void StartGame()
     {
-        // TODO: Commented because of compiler error
-        //startGame?.Invoke();
+        startGame?.Invoke();
 
         if (configManager != null)
         {
             Debug.Log("Setting up ConfigManager...");
             configManager.SetupData();
+            _playerInitialBubbles = configManager.GetPlayerInitialBubbles();
+            _daysToWin = configManager.GetDaysToWin();
             _actions = configManager.GetActions();
             _dialogs = configManager.GetDialogs();
             Debug.Log("ConfigManager set up successfully.");
@@ -62,7 +62,7 @@ public class FlowManager : MonoBehaviour
         Debug.Log($"Days to win: {_daysToWin}");
 
         Debug.Log("--- Actions ---");
-        foreach (Action action in _actions) 
+        foreach (DayAction action in _actions) 
         {
             Debug.Log($"Id: {action.Id}, Type: {action.Type}, Text: {action.Text}, ActionType: {action.ActionType}");
         }

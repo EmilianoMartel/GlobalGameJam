@@ -8,7 +8,7 @@ public class ConfigManager : MonoBehaviour
     private int _daysToWin;
 
     // DayEvents
-    private List<Action> _actions;
+    private List<DayAction> _actions;
     private List<Dialog> _dialogs;
 
     [ContextMenu("SetupConfigData")]
@@ -20,7 +20,7 @@ public class ConfigManager : MonoBehaviour
 
     public int GetPlayerInitialBubbles() { return _playerInitialBubbles; }
     public int GetDaysToWin() { return _daysToWin; }
-    public List<Action> GetActions() { return _actions; }
+    public List<DayAction> GetActions() { return _actions; }
     public List<Dialog> GetDialogs() { return _dialogs; }
 
     private void MockStartUp()
