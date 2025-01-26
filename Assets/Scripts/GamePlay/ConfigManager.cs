@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using GoogleSheetsToUnity;
 
 public class ConfigManager : MonoBehaviour
@@ -42,8 +43,10 @@ public class ConfigManager : MonoBehaviour
         };
 
         _dialogs = new();
-        foreach ( var day in dayData.days_list ){
-            var day_obj = CreateDialog( day.Id, day.Text, day.ResponseAction1, day.ResponseAction2 );
+        foreach ( var day in dayData.days_list ){            
+            var responseAction1 = Enum.Parse<ActionType>(day.ResponseAction1);
+            var responseAction2 = Enum.Parse<ActionType>(day.ResponseAction2);
+            var day_obj = CreateDialog( day.Id, day.Text, responseAction1, responseAction2 );
             _dialogs.Add(day_obj);
         }
     }

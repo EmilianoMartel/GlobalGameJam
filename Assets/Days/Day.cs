@@ -9,9 +9,9 @@ public class Day : ScriptableObject
     [SerializeField]public int Id;
     [SerializeField]public string Type;
     [SerializeField]public string Text;
-    [SerializeField]public ActionType ActionType;
-    [SerializeField]public ActionType ResponseAction1;
-    [SerializeField]public ActionType ResponseAction2;
+    [SerializeField]public string ActionType;
+    [SerializeField]public string ResponseAction1;
+    [SerializeField]public string ResponseAction2;
     [SerializeField]public string Amount1;
     [SerializeField]public string Amount2;
 }

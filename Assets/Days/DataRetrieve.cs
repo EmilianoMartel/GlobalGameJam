@@ -51,15 +51,15 @@ public class DataRetrieve : ScriptableObject
         List<GSTU_Cell> amount1 = spreadSheetRef.columns["Amount1"];
         List<GSTU_Cell> amount2 = spreadSheetRef.columns["Amount2"];
         
-        for (int i = 0; i < types.Count; i++)
+        for (int i = 1; i < types.Count; i++)
         {
             var day = CreateInstance<Day>();
             day.Id = i;
             day.Type = types[i].value;
             day.Text = texts[i].value;
-            day.ActionType = Enum.Parse<ActionType>(actionTypes[i].value);
-            day.ResponseAction1 = Enum.Parse<ActionType>(response1[i].value);
-            day.ResponseAction2 = Enum.Parse<ActionType>(response2[i].value);
+            day.ActionType = actionTypes[i].value;
+            day.ResponseAction1 = response1[i].value;
+            day.ResponseAction2 = response2[i].value;
             day.Amount1 = amount1[i].value;
             day.Amount2 = amount2[i].value;
 

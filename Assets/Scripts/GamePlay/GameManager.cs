@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public event Action startGame;
     public event Action endGame;
 
+    public Dialog currentDialog;
+
     public void HandleSpecialEvents(string id)
     {
         if (id == playId)
@@ -50,7 +52,15 @@ public class GameManager : MonoBehaviour
             _actions = configManager.GetActions();
             _dialogs = configManager.GetDialogs();
             Debug.Log("ConfigManager set up successfully.");
+
+            LogConfigs();
         }
+    }
+
+
+    public Dialog GetCurrentDay(int id){
+        Debug.Log(id + " - " + _dialogs.Count);
+        return _dialogs[id];
     }
 
     // TODO: Method for checking everything works as expected, 
