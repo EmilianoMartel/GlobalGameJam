@@ -6,7 +6,8 @@ using UnityEngine;
 public class Day : ScriptableObject
 {
     
-    [SerializeField]public int Id;
+    [SerializeField]public int Id; //THIS IS UNIQUE
+    [SerializeField]public int Day_ID; //THIS IS TO IDENTIFY THE DAY (IN TE CASE OF DIALOG ACTIONS)
     [SerializeField]public string Type;
     [SerializeField]public string Text;
     [SerializeField]public string ActionType;

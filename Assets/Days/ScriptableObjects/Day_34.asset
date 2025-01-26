@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_34
   m_EditorClassIdentifier: 
   Id: 34
-  Type: Action
+  Day_ID: 34
+  Type: ACTION
   Text: "Fancy that! Even underwater, an eel\u2019s zap can still leave your muscles
     numb. Fascinating!"
   ActionType: LOSE_HIJINKS

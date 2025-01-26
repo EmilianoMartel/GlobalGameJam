@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_16
   m_EditorClassIdentifier: 
   Id: 16
-  Type: Action
+  Day_ID: 16
+  Type: ACTION
   Text: A mermaid sings, but she keeps forgetting the words.
   ActionType: DO_NOTHING
   ResponseAction1: 16

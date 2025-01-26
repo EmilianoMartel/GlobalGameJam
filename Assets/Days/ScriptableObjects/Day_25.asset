@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_25
   m_EditorClassIdentifier: 
   Id: 25
-  Type: Action
+  Day_ID: 25
+  Type: ACTION
   Text: A shrimp asks you to help carry its oversized luggage. You politely decline.
   ActionType: LOSE_MOXIE
   ResponseAction1: 25

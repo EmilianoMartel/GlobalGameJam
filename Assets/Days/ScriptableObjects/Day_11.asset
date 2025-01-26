@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_11
   m_EditorClassIdentifier: 
   Id: 11
-  Type: Action
+  Day_ID: 11
+  Type: ACTION
   Text: "A clownfish asks if you \u201Cget the joke,\u201D but you\u2019re still
     confused."
   ActionType: DO_NOTHING

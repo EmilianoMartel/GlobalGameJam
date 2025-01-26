@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     private int _currentDay = 1;
     private DayEvent _currenDayEvent;
 
-    public Action<int, Dialog> dayChangeEvent;
+    public Action<int, DayEvent> dayChangeEvent;
     public Action<bool> winGame;
 
     private void OnEnable()
@@ -42,9 +42,9 @@ public class GameController : MonoBehaviour
         }
 
         _currentDay++;
-        var day_dialog = _gameManager.GetCurrentDay(_currentDay);
+        var day = _gameManager.GetCurrentDay(_currentDay);
         _player.DecrementBubble();
-        dayChangeEvent?.Invoke(_currentDay, day_dialog);
+        dayChangeEvent?.Invoke(_currentDay, day);
     }
 
     private void HandleStartGame()

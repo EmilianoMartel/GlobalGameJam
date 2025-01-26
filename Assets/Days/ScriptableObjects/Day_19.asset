@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_19
   m_EditorClassIdentifier: 
   Id: 19
-  Type: Action
+  Day_ID: 19
+  Type: ACTION
   Text: "On second thought, you realize your other shirt would\u2019ve looked a lot
     less \u2018bubbly.\u2019 You should seriously do some soul searching."
   ActionType: DO_NOTHING

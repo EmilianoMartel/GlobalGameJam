@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_37
   m_EditorClassIdentifier: 
   Id: 37
-  Type: DialogAction
+  Day_ID: 36
+  Type: DIALOG_ACTION
   Text: Ignore Him
   ActionType: DO_NOTHING
   ResponseAction1: 37

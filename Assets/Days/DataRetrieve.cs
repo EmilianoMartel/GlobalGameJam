@@ -19,7 +19,7 @@ public class DataRetrieve : ScriptableObject
 {
     
     [SerializeField] public List<Day> days_list = new List<Day>();
-    [SerializeField] private int last_days_amount = 0;
+    [SerializeField] public int last_days_amount = 0;
     
     public void GetData()
     {
@@ -43,6 +43,7 @@ public class DataRetrieve : ScriptableObject
     private void WhenSpreadsheetDataReady(GstuSpreadSheet spreadSheetRef){
 
         //GSTU_Cell cell = spreadSheetRef["A2"];
+        List<GSTU_Cell> day_ids = spreadSheetRef.columns["Day_ID"];
         List<GSTU_Cell> types = spreadSheetRef.columns["Type"];
         List<GSTU_Cell> texts = spreadSheetRef.columns["Text"];
         List<GSTU_Cell> actionTypes = spreadSheetRef.columns["ActionType"];
@@ -55,6 +56,7 @@ public class DataRetrieve : ScriptableObject
         {
             var day = CreateInstance<Day>();
             day.Id = i;
+            day.Day_ID = int.Parse(day_ids[i].value);
             day.Type = types[i].value;
             day.Text = texts[i].value;
             day.ActionType = actionTypes[i].value;
@@ -64,6 +66,8 @@ public class DataRetrieve : ScriptableObject
             day.Amount2 = amount2[i].value;
 
             days_list.Add( day );
+
+            last_days_amount = day.Day_ID;
             
             AssetDatabase.CreateAsset(day, "Assets/Days/ScriptableObjects/Day_" + i + ".asset");
         }

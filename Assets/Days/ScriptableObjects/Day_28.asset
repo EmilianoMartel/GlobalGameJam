@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_28
   m_EditorClassIdentifier: 
   Id: 28
-  Type: Action
+  Day_ID: 28
+  Type: ACTION
   Text: "A dolphin teaches you how to whistle underwater. It\u2019s harder than it
     looks."
   ActionType: LOSE_BUBBLE

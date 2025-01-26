@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_40
   m_EditorClassIdentifier: 
   Id: 40
-  Type: DialogAction
+  Day_ID: 37
+  Type: DIALOG_ACTION
   Text: Ignore Him
   ActionType: LOSE_MOXIE
   ResponseAction1: 40

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_36
   m_EditorClassIdentifier: 
   Id: 36
-  Type: Dialog
+  Day_ID: 36
+  Type: DIALOG
   Text: "An oyster gives you a cold shoulder. \u201CDon\u2019t talk to me unless
     you have pearls,\u201D it says."
   ActionType: DO_NOTHING

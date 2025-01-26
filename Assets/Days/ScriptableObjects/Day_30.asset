@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_30
   m_EditorClassIdentifier: 
   Id: 30
-  Type: Action
+  Day_ID: 30
+  Type: ACTION
   Text: A shrimp challenges you to a staring contest. You lose immediately.
   ActionType: GAIN_HIJINKS
   ResponseAction1: 30

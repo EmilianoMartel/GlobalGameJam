@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_32
   m_EditorClassIdentifier: 
   Id: 32
-  Type: Action
+  Day_ID: 32
+  Type: ACTION
   Text: "A sea slug claims it\u2019s the fastest creature in the ocean. You nod politely."
   ActionType: GAIN_MOXIE
   ResponseAction1: 32

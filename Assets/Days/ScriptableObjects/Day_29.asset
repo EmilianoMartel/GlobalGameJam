@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_29
   m_EditorClassIdentifier: 
   Id: 29
-  Type: Action
+  Day_ID: 29
+  Type: ACTION
   Text: "An octopus invites you to play hide-and-seek. You\u2019ll never win."
   ActionType: GAIN_HIJINKS
   ResponseAction1: 29

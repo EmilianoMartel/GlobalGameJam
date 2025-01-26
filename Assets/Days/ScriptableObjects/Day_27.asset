@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_27
   m_EditorClassIdentifier: 
   Id: 27
-  Type: Action
+  Day_ID: 27
+  Type: ACTION
   Text: "A grumpy sea urchin tells you to \u201Cwatch where you step!\u201D even
     though you\u2019re floating."
   ActionType: GAIN_HIJINKS

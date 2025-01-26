@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_39
   m_EditorClassIdentifier: 
   Id: 39
-  Type: Dialog
+  Day_ID: 37
+  Type: DIALOG
   Text: A stingray insists it knows the best kelp salad in town.
   ActionType: DO_NOTHING
   ResponseAction1: 39

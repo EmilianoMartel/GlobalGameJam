@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_22
   m_EditorClassIdentifier: 
   Id: 22
-  Type: Action
+  Day_ID: 22
+  Type: ACTION
   Text: "A group of clownfish tells the worst jokes you\u2019ve ever heard, and you
     laugh anyway."
   ActionType: GAIN_MOXIE

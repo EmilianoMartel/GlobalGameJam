@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_8
   m_EditorClassIdentifier: 
   Id: 8
-  Type: Action
+  Day_ID: 8
+  Type: ACTION
   Text: You spot a crab directing traffic at a busy reef intersection.
   ActionType: DO_NOTHING
   ResponseAction1: 8

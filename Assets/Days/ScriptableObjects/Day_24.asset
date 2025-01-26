@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_24
   m_EditorClassIdentifier: 
   Id: 24
-  Type: Action
+  Day_ID: 24
+  Type: ACTION
   Text: A clam shuts tight when you try to say hello. Rude!
   ActionType: LOSE_MOXIE
   ResponseAction1: 24

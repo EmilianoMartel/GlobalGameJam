@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_1
   m_EditorClassIdentifier: 
   Id: 1
-  Type: Action
+  Day_ID: 1
+  Type: ACTION
   Text: 'The coral whispers secrets to you. They might be gossiping about the seaweed.
 
 '

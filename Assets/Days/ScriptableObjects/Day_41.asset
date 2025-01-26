@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_41
   m_EditorClassIdentifier: 
   Id: 41
-  Type: DialogAction
+  Day_ID: 37
+  Type: DIALOG_ACTION
   Text: Ask where to find it
   ActionType: GAIN_MOXIE
   ResponseAction1: 41

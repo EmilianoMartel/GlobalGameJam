@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_31
   m_EditorClassIdentifier: 
   Id: 31
-  Type: Action
+  Day_ID: 31
+  Type: ACTION
   Text: A whale waves at you with its tail, and you feel incredibly small.
   ActionType: LOSE_HIJINKS
   ResponseAction1: 31

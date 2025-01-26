@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_10
   m_EditorClassIdentifier: 
   Id: 10
-  Type: Action
+  Day_ID: 10
+  Type: ACTION
   Text: "A starfish is stuck to your leg. It claims it\u2019s hitching a ride."
   ActionType: DO_NOTHING
   ResponseAction1: 10

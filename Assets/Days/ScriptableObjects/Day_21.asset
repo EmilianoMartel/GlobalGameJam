@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_21
   m_EditorClassIdentifier: 
   Id: 21
-  Type: Action
+  Day_ID: 21
+  Type: ACTION
   Text: "After a final rest, you arrive at your destination. Yet you can\u2019t shake
     the feeling that you forgot something important\u2014something elemental\u2026"
   ActionType: DO_NOTHING

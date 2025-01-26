@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_38
   m_EditorClassIdentifier: 
   Id: 38
-  Type: DialogAction
+  Day_ID: 36
+  Type: DIALOG_ACTION
   Text: Blame Him
   ActionType: LOSE_MOXIE
   ResponseAction1: 38

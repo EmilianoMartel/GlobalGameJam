@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private List<DayAction> _actions;
     private List<Dialog> _dialogs;
 
+    private List<DayEvent> _days;
+
     public event Action startGame;
     public event Action endGame;
 
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
             _daysToWin = configManager.GetDaysToWin();
             _actions = configManager.GetActions();
             _dialogs = configManager.GetDialogs();
+            _days = configManager.GetDayEvents();
             Debug.Log("ConfigManager set up successfully.");
 
             LogConfigs();
@@ -58,9 +61,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public Dialog GetCurrentDay(int id){
-        Debug.Log(id + " - " + _dialogs.Count);
-        return _dialogs[id];
+    public DayEvent GetCurrentDay(int id){
+        Debug.Log(id + " - " + _days.Count);
+        return _days[id];
     }
 
     // TODO: Method for checking everything works as expected, 

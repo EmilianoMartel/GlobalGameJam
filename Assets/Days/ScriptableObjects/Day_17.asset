@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_17
   m_EditorClassIdentifier: 
   Id: 17
-  Type: Action
+  Day_ID: 17
+  Type: ACTION
   Text: "It\u2019s a brand new day at the bottom of the sea and you still can\u2019t
     breathe underwater. But don\u2019t let that silly fact ruin your fun!"
   ActionType: DO_NOTHING

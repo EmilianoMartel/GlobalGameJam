@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_5
   m_EditorClassIdentifier: 
   Id: 5
-  Type: Action
+  Day_ID: 5
+  Type: ACTION
   Text: "A pirate ghost fish tells you a story, but it\u2019s full of plot holes."
   ActionType: DO_NOTHING
   ResponseAction1: 5

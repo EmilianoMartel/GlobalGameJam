@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_6
   m_EditorClassIdentifier: 
   Id: 6
-  Type: Action
+  Day_ID: 6
+  Type: ACTION
   Text: You hear whale songs in the distance. It sounds like an underwater opera.
   ActionType: DO_NOTHING
   ResponseAction1: 6

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_15
   m_EditorClassIdentifier: 
   Id: 15
-  Type: Action
+  Day_ID: 15
+  Type: ACTION
   Text: "A school of fish puts on a synchronized swimming routine. They\u2019re surprisingly
     talented."
   ActionType: DO_NOTHING

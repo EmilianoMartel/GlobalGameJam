@@ -19,9 +19,9 @@ public class GameUi : MonoBehaviour
         _gameController.dayChangeEvent -= HandleDayChange;
     }
 
-    private void HandleDayChange(int day, Dialog dialog)
+    private void HandleDayChange(int day, DayEvent dayEvent)
     {
-        _dayText.text = "Day " + day.ToString() + "\n" + dialog.Text;
+        _dayText.text = "Day " + day.ToString() + "\n" + dayEvent.Text;
 
 
     }

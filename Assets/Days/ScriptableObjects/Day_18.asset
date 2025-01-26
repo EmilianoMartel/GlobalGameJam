@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_18
   m_EditorClassIdentifier: 
   Id: 18
-  Type: Action
+  Day_ID: 18
+  Type: ACTION
   Text: You thought you were having an epiphany, but it turns out it was just your
     oxygen-deprived brain. A new scenario for a known experience.
   ActionType: DO_NOTHING

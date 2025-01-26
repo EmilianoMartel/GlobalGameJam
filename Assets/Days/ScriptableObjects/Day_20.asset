@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_20
   m_EditorClassIdentifier: 
   Id: 20
-  Type: Action
+  Day_ID: 20
+  Type: ACTION
   Text: "Earlier, you overheard someone mention \u201Cwater pressure\u201D. You suddenly
     remember you didn\u2019t take that concept into account whatsoever when planning
     this vacation."

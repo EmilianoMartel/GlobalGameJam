@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_23
   m_EditorClassIdentifier: 
   Id: 23
-  Type: Action
+  Day_ID: 23
+  Type: ACTION
   Text: A bubble floats by, and you swear it whispers your name.
   ActionType: GAIN_BUBBLE
   ResponseAction1: 23

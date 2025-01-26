@@ -16,12 +16,14 @@ public class ConfigManager : MonoBehaviour
     private List<Dialog> _dialogs_available;
     private List<Dialog> _dialogs;
 
+    private List<DayEvent> _dayEventsAvailable;
+    private List<DayEvent> _dayEvents;
+
+    [SerializeField] private DayFactory dayFactory;
+
     [ContextMenu("SetupConfigData")]
     public void SetupData()
     {
-        // TODO: Replace once connection is implemented
-        //MockStartUp();
-        //FetchFromOnlineResource();
         CreateDays();
     }
 
@@ -30,8 +32,11 @@ public class ConfigManager : MonoBehaviour
     public List<DayAction> GetActions() { return _actions; }
     public List<Dialog> GetDialogs() { return _dialogs; }
 
+    public List<DayEvent> GetDayEvents() { return _dayEvents; }
+
 
     private void CreateDays(){
+
         _playerInitialBubbles = 3;
         _daysToWin = 10;
 
@@ -39,37 +44,43 @@ public class ConfigManager : MonoBehaviour
         {
             new(1, "Gain bubble", ActionType.GAIN_BUBBLE),
             new(2, "Lose bubble", ActionType.LOSE_BUBBLE),
-            new(3, "Gain charisma", ActionType.GAIN_CHARISMA),
-            new(4, "Lose charisma", ActionType.LOSE_CHARISMA),
-            new(5, "Gain chaos", ActionType.GAIN_CHAOS),
-            new(6, "Lose chaos", ActionType.LOSE_CHAOS),
+            new(3, "Gain charisma", ActionType.GAIN_MOXIE),
+            new(5, "Gain chaos", ActionType.GAIN_HIJINKS),
+            new(6, "Lose chaos", ActionType.LOSE_HIJINKS),
             new(7, "Do nothing", ActionType.DO_NOTHING)
         };
 
         _dialogs_available = new();
         _dialogs = new();
 
-        foreach ( var day in dayData.days_list ){            
-            var responseAction1 = Enum.Parse<ActionType>(day.ResponseAction1);
-            var responseAction2 = Enum.Parse<ActionType>(day.ResponseAction2);
-            var day_obj = CreateDialog( day.Id, day.Text, responseAction1, responseAction2 );
-            _dialogs_available.Add(day_obj);
+        _dayEventsAvailable = new();
+        _dayEvents = new();
+
+        
+
+        //GROUP DAYS BY ID
+        var groupedDays = new List<Day>[dayData.last_days_amount];
+        for (var j=0; j < dayData.last_days_amount; j++){
+            groupedDays[j] = new List<Day>();
         }
 
+
+        //ADD LISTS OF DAYS TO GROUPED BY ID LIST
+        var last_Day_ID = 0;
+        foreach ( var day in dayData.days_list ){ 
+            groupedDays[day.Day_ID - 1].Add( day );
+            last_Day_ID = day.Day_ID;
+        }
+
+        //CREATE LIST OF AVAILABLE OPTIONS FOR INSTANCING DAYS
+        foreach ( var days in groupedDays){
+            _dayEventsAvailable.Add( dayFactory.GetDialogFromDay( Enum.Parse<DayEventType>(days[0].Type), days) );
+        }
+
+        // RANDOMIZE AS MANY DAYS AS NEEDED FOR WINNING
         for (var i = 0; i < _daysToWin; i++){
-            
-            var r = UnityEngine.Random.Range(0, _dialogs_available.Count);
-            var _dialog_type = _dialogs_available[r];
-            Debug.Log(_dialog_type.Text);
-            _dialogs.Add( _dialog_type );
+            var r = UnityEngine.Random.Range(0, last_Day_ID);
+            _dayEvents.Add( _dayEventsAvailable[r] );
         }
-    }
-
-    private Dialog CreateDialog(int Id, string Text, ActionType firstActionType, ActionType secondActionType)
-    {
-        DialogAction firstAction = new(Id + 1, Text + " - Action 1", firstActionType);
-        DialogAction secondAction = new(Id + 2, Text + " - Action 2", secondActionType);
-
-        return new (Id, Text, firstAction, secondAction);
     }
 }

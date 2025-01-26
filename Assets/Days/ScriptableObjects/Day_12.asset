@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_12
   m_EditorClassIdentifier: 
   Id: 12
-  Type: Action
+  Day_ID: 12
+  Type: ACTION
   Text: "A turtle tells you it\u2019s writing a memoir called Slow and Steady."
   ActionType: DO_NOTHING
   ResponseAction1: 12

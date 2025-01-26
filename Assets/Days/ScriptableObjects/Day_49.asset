@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_49
   m_EditorClassIdentifier: 
   Id: 49
-  Type: Action
+  Day_ID: 43
+  Type: ACTION
   Text: A jellyfish offers to teach you the secret art of floating aimlessly.
   ActionType: LOSE_MOXIE
   ResponseAction1: 48

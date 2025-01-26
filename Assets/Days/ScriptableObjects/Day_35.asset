@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_35
   m_EditorClassIdentifier: 
   Id: 35
-  Type: Action
+  Day_ID: 35
+  Type: ACTION
   Text: A jellyfish politely asks for directions, but you have no idea where you
     are either.
   ActionType: LOSE_MOXIE

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_33
   m_EditorClassIdentifier: 
   Id: 33
-  Type: Action
+  Day_ID: 33
+  Type: ACTION
   Text: "Ouch! You find yourself in the wrong school (of fish). The fishiest of the
     bunch fin-slaps you for asking where the bathroom is\u2026"
   ActionType: LOSE_BUBBLE

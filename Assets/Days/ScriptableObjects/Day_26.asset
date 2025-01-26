@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_26
   m_EditorClassIdentifier: 
   Id: 26
-  Type: Action
+  Day_ID: 26
+  Type: ACTION
   Text: A sand Bitcoin tells you to invest wisely, then disappears.
   ActionType: GAIN_HIJINKS
   ResponseAction1: 26

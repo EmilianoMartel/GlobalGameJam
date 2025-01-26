@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Day_4
   m_EditorClassIdentifier: 
   Id: 4
-  Type: Action
+  Day_ID: 4
+  Type: ACTION
   Text: A shy eel peeks out of its cave, then immediately hides when you wave.
   ActionType: DO_NOTHING
   ResponseAction1: 4
