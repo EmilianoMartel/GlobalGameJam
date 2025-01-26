@@ -15,14 +15,14 @@ public class PlayerUI : MonoBehaviour
     {
         _player.bubblesChangeEvent += HandleChangeBubble;
         _player.angryChangeEvent += HandleAngry;
-        _player.charismaChangeEvent += HandleChangeBubble;
+        _player.charismaChangeEvent += HandleCharisma;
     }
 
     private void OnDisable()
     {
         _player.bubblesChangeEvent -= HandleChangeBubble;
         _player.angryChangeEvent -= HandleAngry;
-        _player.charismaChangeEvent -= HandleChangeBubble;
+        _player.charismaChangeEvent -= HandleCharisma;
     }
 
     private void Awake()

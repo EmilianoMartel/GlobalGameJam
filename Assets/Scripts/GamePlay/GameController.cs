@@ -41,7 +41,6 @@ public class GameController : MonoBehaviour
         }
 
         _currentDay++;
-        _player.DecrementBubble();
         dayChangeEvent?.Invoke(_currentDay);
     }
 
