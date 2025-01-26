@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using GoogleSheetsToUnity;
 
 public class ConfigManager : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class ConfigManager : MonoBehaviour
     public void SetupData()
     {
         // TODO: Replace once connection is implemented
-        MockStartUp();
+        //MockStartUp();
+        FetchFromOnlineResource();
     }
 
     public int GetPlayerInitialBubbles() { return _playerInitialBubbles; }
@@ -60,6 +62,17 @@ public class ConfigManager : MonoBehaviour
 
     private void FetchFromOnlineResource()
     {
-        // TODO: Implement when online spreadsheet is available
+        Debug.Log( "FETCHING ");
+        SpreadsheetManager.Read(new GSTU_Search("1rCXe1TjigvgZ8S4XdGoupylYFF9jDkiTZqf0_bbmas0", "Hoja 1"), WhenSpreadsheetDataReady);
+    }
+
+    private void WhenSpreadsheetDataReady(GstuSpreadSheet spreadSheetRef){
+
+        for (int i = 0; i < 10; i++)
+        {    
+            Debug.Log("coso" + i);
+        }
+        Debug.Log( spreadSheetRef.columns["Id"] );
+        
     }
 }

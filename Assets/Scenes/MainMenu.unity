@@ -484,7 +484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.000015258789, y: 29.045}
+  m_AnchoredPosition: {x: 0, y: 29.045}
   m_SizeDelta: {x: -131.9438, y: 31.1744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282342568
@@ -844,6 +844,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437600818}
   m_CullTransparentMesh: 1
+--- !u!1 &463612292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463612294}
+  - component: {fileID: 463612293}
+  m_Layer: 5
+  m_Name: GameData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &463612293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463612292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dad664ffcb5e06458527d416a7ac978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &463612294
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463612292}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 550.5, y: 319.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &495629904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,7 +2571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 2.4112015, y: -16.38}
+  m_AnchoredPosition: {x: 2.4111938, y: -16.38}
   m_SizeDelta: {x: -209.4096, y: 18.8336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335815147
@@ -2953,7 +3001,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 69eae5df2c77cf24fbcf3cddbe42b303, type: 2}
   - {fileID: 11400000, guid: 4317129079f898b4f84ab4cc0cf00b48, type: 2}
   - {fileID: 11400000, guid: f17ad3328fdf60745bcd956080767884, type: 2}
-  _gameManager: {fileID: 1664419466}
+  _gameManager: {fileID: 0}
   _finalScreenId: {fileID: 11400000, guid: 811ee1eddd8b1b446bf6dde039e37254, type: 2}
 --- !u!1 &1613713165
 GameObject:
@@ -3026,7 +3074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664419467}
-  - component: {fileID: 1664419466}
+  - component: {fileID: 1664419469}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3034,21 +3082,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1664419466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664419465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e1af7f4e9cc3b47812c1135db795af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playId: Play
-  exitId: Exit
-  configManager: {fileID: 0}
 --- !u!4 &1664419467
 Transform:
   m_ObjectHideFlags: 0
@@ -3064,6 +3097,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664419469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664419465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e1af7f4e9cc3b47812c1135db795af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playId: Play
+  exitId: Exit
+  configManager: {fileID: 463612293}
 --- !u!1 &1672742005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3681,7 +3729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextDayButton: {fileID: 282342568}
-  _gameManager: {fileID: 1664419466}
+  _gameManager: {fileID: 1664419469}
   _player: {fileID: 1259506499}
   _maxDay: 10
 --- !u!4 &1917622449
@@ -3906,5 +3954,6 @@ SceneRoots:
   - {fileID: 833309020}
   - {fileID: 1584574138}
   - {fileID: 1664419467}
+  - {fileID: 463612294}
   - {fileID: 1917622449}
   - {fileID: 1259506500}
