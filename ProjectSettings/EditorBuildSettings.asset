@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestLu.unity
     guid: 2f17dc3cbe04e3f4db7ac916321a19bd
+  - enabled: 1
+    path: Assets/Scenes/TestCoqui.unity
+    guid: 644f7a7161ffe7f4cb86657c4813c6d7
   m_configObjects: {}

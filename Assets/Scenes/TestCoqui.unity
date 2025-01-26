@@ -6813,6 +6813,7 @@ MonoBehaviour:
   _dayEventText: {fileID: 1861057231}
   _optionAButton: {fileID: 1689130146}
   _optionBButton: {fileID: 1213423419}
+  _nextDayButton: {fileID: 0}
 --- !u!1 &1554369165
 GameObject:
   m_ObjectHideFlags: 0
@@ -7040,7 +7041,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d44c54a47ba45bf4491ba2ca2ae42799, type: 2}
   m_audioClip: {fileID: 8300000, guid: 34d7c5051514f714ba6df894eba085a3, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -7439,6 +7440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd418d5f6d982d14097361baf63aba36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mixer: {fileID: 24100000, guid: d44c54a47ba45bf4491ba2ca2ae42799, type: 2}
+  _type: Master
+  _waitForSet: 0.5
   _audio: {fileID: 1615667173}
   _soundSFCSourcer: {fileID: 11400000, guid: 6d55595f2c7ffc5468d54d9fd0bc53e1, type: 2}
 --- !u!4 &1615667175
