@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -44,9 +45,18 @@ public class DayManager : MonoBehaviour
 
     public void PassDay(int dayNumber)
     {
+        DayEvent actionToTrigger = null;
         // TODO: Add check for special event
-        DayAction actionToTrigger = getRandomAction();
-        ApplyActionTypeEffect(actionToTrigger.ActionType);
+        if(dayNumber % 3 == 0)
+        {
+            actionToTrigger = getRandomSpecialEvent();
+        } else
+        {
+            DayAction randomEvent = getRandomAction();
+            ApplyActionTypeEffect(randomEvent.ActionType);
+
+            actionToTrigger = randomEvent;
+        }
 
         eventChange?.Invoke(actionToTrigger);
     }
@@ -58,30 +68,11 @@ public class DayManager : MonoBehaviour
         return actions[randomEvent];
     }
 
-    // TODO: Method for checking everything works as expected, 
-    // can be removed once implementation is completed.
-    [ContextMenu("LogConfigs")]
-    private void LogConfigs()
+    private Dialog getRandomSpecialEvent()
     {
-        StringBuilder sb = new ();
-        foreach (DayAction action in actions)
-        {
-            sb.Append($"Id: {action.Id}, Type: {action.Type}, Text: {action.Text}, ActionType: {action.ActionType}\n");
-        }
+        int randomEvent = UnityEngine.Random.Range(0, dialogs.Count);
 
-        Debug.Log("--- Actions ---");
-        Debug.Log(sb.ToString());
-
-        sb.Clear();
-
-        foreach (Dialog dialog in dialogs)
-        {
-            sb.Append($"Id: {dialog.Id}, Type: {dialog.Type}, Text: {dialog.Text}, " +
-                $"FirstAction.Type: {dialog.FirstAction.ActionType}, SecondAction.Type: {dialog.SecondAction.ActionType}\n");
-        }
-
-        Debug.Log("--- Dialogs ---");
-        Debug.Log(sb.ToString());
+        return dialogs[randomEvent];
     }
 
     public void ApplyActionTypeEffect(ActionType actionType)
@@ -90,6 +81,7 @@ public class DayManager : MonoBehaviour
 
         switch(actionType)
         {
+            //SIMPLES
             case ActionType.GAIN_BUBBLE:
                 _player.IncrementBubble();
                 break;
@@ -108,6 +100,61 @@ public class DayManager : MonoBehaviour
             case ActionType.LOSE_HIJINKS:
                 _player.UpdateHijinks(-1);
                 break;
+                
+            //GAIN BUBBLES
+            case ActionType.GAIN_BUBBLE_GAIN_HIJINKS:
+                _player.IncrementBubble();
+                _player.UpdateHijinks(1);
+                break;
+            case ActionType.GAIN_BUBBLE_GAIN_MOXIE:
+                _player.IncrementBubble();
+                _player.UpdateMoxie(1);
+                break;
+            case ActionType.GAIN_BUBBLE_LOSE_HIJINKS:
+                _player.IncrementBubble();
+                _player.UpdateHijinks(-1);
+                break;
+            case ActionType.GAIN_BUBBLE_LOSE_MOXIE:
+                _player.IncrementBubble();
+                _player.UpdateMoxie(-1);
+                break;
+
+            //LOSE BUBBLES
+            case ActionType.LOSE_BUBBLE_GAIN_HIJINKS:
+                _player.DecrementBubble();
+                _player.UpdateHijinks(1);
+                break;
+            case ActionType.LOSE_BUBBLE_GAIN_MOXIE:
+                _player.DecrementBubble();
+                _player.UpdateMoxie(1);
+                break;
+            case ActionType.LOSE_BUBBLE_LOSE_HIJINKS:
+                _player.DecrementBubble();
+                _player.UpdateHijinks(-1);
+                break;
+            case ActionType.LOSE_BUBBLE_LOSE_MOXIE:
+                _player.DecrementBubble();
+                _player.UpdateMoxie(-1);
+                break;
+            
+            //NON-BUBBLE
+            case ActionType.GAIN_MOXIE_GAIN_HIJINKS:
+                _player.UpdateHijinks(1);
+                _player.UpdateMoxie(1);
+                break;
+            case ActionType.LOSE_MOXIE_LOSE_HIJINKS:
+                _player.UpdateHijinks(-1);
+                _player.UpdateMoxie(-1);
+                break;
+            case ActionType.GAIN_HIJINKS_LOSE_MOXIE:
+                _player.UpdateHijinks(1);
+                _player.UpdateMoxie(-1);
+                break;
+            case ActionType.GAIN_MOXIE_LOSE_HIJINKS:
+                _player.UpdateHijinks(-1);
+                _player.UpdateMoxie(1);
+                break;
+
             default:
                 break;
         }

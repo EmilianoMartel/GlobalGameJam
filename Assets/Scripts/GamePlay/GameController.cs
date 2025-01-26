@@ -34,19 +34,20 @@ public class GameController : MonoBehaviour
 
     private void HandlePassDay()
     {
-        if (_currentDay > _maxDay)
+        if (_currentDay >= _maxDay)
         {
             winGame?.Invoke(true);
             Debug.Log("win");
+        } else
+        {
+            _currentDay++;
+            dayChangeEvent?.Invoke(_currentDay);
         }
-
-        _currentDay++;
-        dayChangeEvent?.Invoke(_currentDay);
     }
 
     private void HandleStartGame()
     {
-        _currentDay = 1;
+        ResetStatus();
         _player.HandleStartGame();
         StartCoroutine(WaitingStart());
     }
@@ -61,5 +62,10 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("loose");
         winGame?.Invoke(false);
+    }
+
+    private void ResetStatus()
+    {
+        _currentDay = 1;
     }
 }
