@@ -44,9 +44,18 @@ public class DayManager : MonoBehaviour
 
     public void PassDay(int dayNumber)
     {
+        DayEvent actionToTrigger = null;
         // TODO: Add check for special event
-        DayAction actionToTrigger = getRandomAction();
-        ApplyActionTypeEffect(actionToTrigger.ActionType);
+        if(dayNumber % 3 == 0)
+        {
+            actionToTrigger = getRandomSpecialEvent();
+        } else
+        {
+            DayAction randomEvent = getRandomAction();
+            ApplyActionTypeEffect(randomEvent.ActionType);
+
+            actionToTrigger = randomEvent;
+        }
 
         eventChange?.Invoke(actionToTrigger);
     }
@@ -58,30 +67,11 @@ public class DayManager : MonoBehaviour
         return actions[randomEvent];
     }
 
-    // TODO: Method for checking everything works as expected, 
-    // can be removed once implementation is completed.
-    [ContextMenu("LogConfigs")]
-    private void LogConfigs()
+    private Dialog getRandomSpecialEvent()
     {
-        StringBuilder sb = new ();
-        foreach (DayAction action in actions)
-        {
-            sb.Append($"Id: {action.Id}, Type: {action.Type}, Text: {action.Text}, ActionType: {action.ActionType}\n");
-        }
+        int randomEvent = UnityEngine.Random.Range(0, dialogs.Count);
 
-        Debug.Log("--- Actions ---");
-        Debug.Log(sb.ToString());
-
-        sb.Clear();
-
-        foreach (Dialog dialog in dialogs)
-        {
-            sb.Append($"Id: {dialog.Id}, Type: {dialog.Type}, Text: {dialog.Text}, " +
-                $"FirstAction.Type: {dialog.FirstAction.ActionType}, SecondAction.Type: {dialog.SecondAction.ActionType}\n");
-        }
-
-        Debug.Log("--- Dialogs ---");
-        Debug.Log(sb.ToString());
+        return dialogs[randomEvent];
     }
 
     public void ApplyActionTypeEffect(ActionType actionType)
