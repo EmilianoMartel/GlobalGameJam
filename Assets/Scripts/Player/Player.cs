@@ -6,9 +6,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] private int _maxBubbles = 3;
-    [SerializeField] private int _startCharisma = 10;
-    [SerializeField] private int _startAngry = 10;
+    private int _maxBubbles = 3;
+    private int _startCharisma = 10;
+    private int _startAngry = 10;
+
+
+    [SerializeField] private ConfigManager configManager;
 
     [Space(10)]
     [Header("Player awaits")]
@@ -32,6 +35,7 @@ public class Player : MonoBehaviour
         _currentBubbles = _maxBubbles;
         _currentCharisma = _startCharisma;
         _currentAngry = _startAngry;
+
         bubblesChangeEvent?.Invoke(_currentBubbles);
         angryChangeEvent?.Invoke(_currentAngry);
         charismaChangeEvent?.Invoke(_currentCharisma);
@@ -40,15 +44,21 @@ public class Player : MonoBehaviour
     public void HandleStartGame()
     {
         startGame?.Invoke();
-        _currentBubbles = _maxBubbles;
-        _currentCharisma = _startCharisma;
-        _currentAngry = _startAngry;
+
         StartCoroutine(WaitingStart());
     }
 
     private IEnumerator WaitingStart()
     {
         yield return new WaitForSeconds(_waitForStart);
+
+        // lo tuve que poner aca por que en HandleStartGame todavía estan los valores default
+        _currentBubbles = configManager.GetPlayerInitialBubbles();
+        _currentCharisma = configManager.GetPlayerInitialMoxie();
+        _currentAngry = configManager.GetPlayerInitialHijinks();
+
+     
+        Debug.Log( "PLAYER WAITING START" );
 
         bubblesChangeEvent?.Invoke(_currentBubbles);
         angryChangeEvent?.Invoke(_currentAngry);

@@ -9,6 +9,8 @@ public class ConfigManager : MonoBehaviour
 {
     // Configs
     private int playerInitialBubbles;
+    private int playerInitialMoxie;
+    private int playerInitialHijinks;
     private int daysToWin;
 
     // DayEvents
@@ -23,16 +25,20 @@ public class ConfigManager : MonoBehaviour
 
     public int GetPlayerInitialBubbles() { return playerInitialBubbles; }
     public int GetDaysToWin() { return daysToWin; }
+    public int GetPlayerInitialMoxie() { return playerInitialMoxie; }
+    public int GetPlayerInitialHijinks() { return playerInitialHijinks; }
     public List<DayAction> GetActions() { return actions; }
     public List<Dialog> GetDialogs() { return dialogs; }
     
     private void FetchFromOnlineResource()
     {
         Debug.Log("--- Retrieving data from online resource ---");
-        SpreadsheetManager.Read(new GSTU_Search("1rCXe1TjigvgZ8S4XdGoupylYFF9jDkiTZqf0_bbmas0", "DaysData"), ParseSpreadsheetFile);
+        SpreadsheetManager.Read(new GSTU_Search("1rCXe1TjigvgZ8S4XdGoupylYFF9jDkiTZqf0_bbmas0", "DaysData"), ParseSpreadsheetDayData);
+
+        SpreadsheetManager.Read(new GSTU_Search("1rCXe1TjigvgZ8S4XdGoupylYFF9jDkiTZqf0_bbmas0", "PlayerData"), ParseSpreadsheetPlayerData);
     }
 
-    private void ParseSpreadsheetFile(GstuSpreadSheet spreadSheetRef)
+    private void ParseSpreadsheetDayData(GstuSpreadSheet spreadSheetRef)
     {
         List<GSTU_Cell> ids = spreadSheetRef.columns["Id"];
         List<GSTU_Cell> types = spreadSheetRef.columns["Type"];
@@ -56,6 +62,18 @@ public class ConfigManager : MonoBehaviour
         { 
             LinkDialogActionsToDialog(dialog);
         }
+    }
+
+    private void ParseSpreadsheetPlayerData(GstuSpreadSheet spreadSheetRef) {
+        List<GSTU_Cell> daysToWin_data = spreadSheetRef.columns["DAYS_TO_WIN"];
+        List<GSTU_Cell> init_bubbles_data = spreadSheetRef.columns["INITIAL_BUBBLES"];
+        List<GSTU_Cell> init_moxie_data = spreadSheetRef.columns["INITIAL_MOXIE"];
+        List<GSTU_Cell> init_hijinks_data = spreadSheetRef.columns["INITIAL_HIJINKS"];
+
+        this.daysToWin = int.Parse(daysToWin_data[1].value);
+        this.playerInitialBubbles = int.Parse(init_bubbles_data[1].value);
+        this.playerInitialMoxie = int.Parse(init_moxie_data[1].value);
+        this.playerInitialHijinks = int.Parse(init_hijinks_data[1].value);
     }
 
     private void CreateDayEventDependingOnType(DayEventType type, GSTU_Cell cellId, GSTU_Cell cellText, GSTU_Cell cellActionType)
