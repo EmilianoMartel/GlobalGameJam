@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -99,7 +100,7 @@ public class DayManager : MonoBehaviour
             case ActionType.LOSE_HIJINKS:
                 _player.UpdateHijinks(-1);
                 break;
-
+                
             //GAIN BUBBLES
             case ActionType.GAIN_BUBBLE_GAIN_HIJINKS:
                 _player.IncrementBubble();
@@ -135,7 +136,7 @@ public class DayManager : MonoBehaviour
                 _player.DecrementBubble();
                 _player.UpdateMoxie(-1);
                 break;
-
+            
             //NON-BUBBLE
             case ActionType.GAIN_MOXIE_GAIN_HIJINKS:
                 _player.UpdateHijinks(1);
