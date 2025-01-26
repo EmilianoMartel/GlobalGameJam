@@ -15,6 +15,7 @@ public class DayUI : MonoBehaviour
     [SerializeField] private TMP_Text _dayEventText;
     [SerializeField] private Button _optionAButton;
     [SerializeField] private Button _optionBButton;
+    [SerializeField] private Button _nextDayButton;
 
     private void OnEnable()
     {
@@ -40,14 +41,37 @@ public class DayUI : MonoBehaviour
         if (dayEvent.Type == DayEventType.DIALOG)
         {
             Dialog dialog = (Dialog) dayEvent;
-            
+
+            ToggleOptionButtons();
+
             // Option A
             _optionAButton.GetComponentInChildren<TMP_Text>().text = dialog.FirstAction.Text;
-            _optionAButton.onClick.AddListener(() => { _dayManager.ApplyActionTypeEffect(dialog.FirstAction.ActionType); });
+            _optionAButton.onClick.AddListener(() => { 
+                _dayManager.ApplyActionTypeEffect(dialog.FirstAction.ActionType);
+                ToggleOptionButtons();
+                RemoveListeners();
+            });
 
             // Option B
             _optionBButton.GetComponentInChildren<TMP_Text>().text = dialog.SecondAction.Text;
-            _optionBButton.onClick.AddListener(() => { _dayManager.ApplyActionTypeEffect(dialog.SecondAction.ActionType); });
+            _optionBButton.onClick.AddListener(() => { 
+                _dayManager.ApplyActionTypeEffect(dialog.SecondAction.ActionType);
+                ToggleOptionButtons();
+                RemoveListeners();
+            });
         }
+    }
+
+    private void ToggleOptionButtons()
+    {
+        _optionAButton.gameObject.SetActive(!_optionAButton.gameObject.activeSelf);
+        _optionBButton.gameObject.SetActive(!_optionBButton.gameObject.activeSelf);
+        _nextDayButton.gameObject.SetActive(!_nextDayButton.gameObject.activeSelf);
+    }
+
+    private void RemoveListeners()
+    {
+        _optionAButton.onClick.RemoveAllListeners();
+        _optionBButton.onClick.RemoveAllListeners();
     }
 }
