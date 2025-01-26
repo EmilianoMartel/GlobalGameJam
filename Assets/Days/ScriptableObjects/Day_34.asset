@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed38f1f61df72ab4d99c1772d6098fbe, type: 3}
+  m_Name: Day_34
+  m_EditorClassIdentifier: 
+  Id: 34
+  Type: Action
+  Text: "Fancy that! Even underwater, an eel\u2019s zap can still leave your muscles
+    numb. Fascinating!"
+  ActionType: LOSE_HIJINKS
+  ResponseAction1: 34
+  ResponseAction2: 34
+  Amount1: 34
+  Amount2: 0

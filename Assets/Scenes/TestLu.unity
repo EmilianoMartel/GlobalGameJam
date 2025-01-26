@@ -1107,7 +1107,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 69eae5df2c77cf24fbcf3cddbe42b303, type: 2}
   - {fileID: 11400000, guid: 4317129079f898b4f84ab4cc0cf00b48, type: 2}
   - {fileID: 11400000, guid: f17ad3328fdf60745bcd956080767884, type: 2}
-  _gameManager: {fileID: 1664419466}
+  _gameManager: {fileID: 1664419468}
   _finalScreenId: {fileID: 11400000, guid: 811ee1eddd8b1b446bf6dde039e37254, type: 2}
 --- !u!1 &1613713165
 GameObject:
@@ -1180,7 +1180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664419467}
-  - component: {fileID: 1664419466}
+  - component: {fileID: 1664419468}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1188,21 +1188,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1664419466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664419465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72434b2ad5e3a064684639046b9a053e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playId: Play
-  exitId: Exit
-  configManager: {fileID: 1356151791}
 --- !u!4 &1664419467
 Transform:
   m_ObjectHideFlags: 0
@@ -1218,6 +1203,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664419468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664419465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e1af7f4e9cc3b47812c1135db795af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playId: Play
+  exitId: Exit
+  configManager: {fileID: 1356151791}
 --- !u!1 &1830176555
 GameObject:
   m_ObjectHideFlags: 0

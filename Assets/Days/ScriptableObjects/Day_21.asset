@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed38f1f61df72ab4d99c1772d6098fbe, type: 3}
+  m_Name: Day_21
+  m_EditorClassIdentifier: 
+  Id: 21
+  Type: Action
+  Text: "After a final rest, you arrive at your destination. Yet you can\u2019t shake
+    the feeling that you forgot something important\u2014something elemental\u2026"
+  ActionType: DO_NOTHING
+  ResponseAction1: 21
+  ResponseAction2: 21
+  Amount1: 21
+  Amount2: 0

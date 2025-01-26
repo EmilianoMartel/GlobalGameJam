@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed38f1f61df72ab4d99c1772d6098fbe, type: 3}
+  m_Name: Day_14
+  m_EditorClassIdentifier: 
+  Id: 14
+  Type: Action
+  Text: "A parrotfish chomps on coral. \u201CIt\u2019s like chewing gum,\u201D it
+    says."
+  ActionType: DO_NOTHING
+  ResponseAction1: 14
+  ResponseAction2: 14
+  Amount1: 14
+  Amount2: 0
