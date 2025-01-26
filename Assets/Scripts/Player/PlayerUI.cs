@@ -32,13 +32,15 @@ public class PlayerUI : MonoBehaviour
 
     private void HandleChangeBubble(int count)
     {
-        Debug.Log(count);
-        //CHECK BUG
         for (int i = 0; i < _bubbleList.Count; i++)
         {
             if (i == count)
             {
                 _bubbleList[i].DesactivateBubble();
+            }
+            else if(i < count)
+            {
+                _bubbleList[i].ActivateBubble();
             }
         }
     }

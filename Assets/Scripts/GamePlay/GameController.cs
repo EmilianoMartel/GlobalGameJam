@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private Player _player;
     [SerializeField] private int _maxDay = 10;
+    [SerializeField] private float _waitForStart = 0.5f;
 
     private int _currentDay = 1;
     private DayEvent _currenDayEvent;
@@ -22,12 +23,14 @@ public class GameController : MonoBehaviour
     {
         _nextDayButton.onClick.AddListener(HandlePassDay);
         _gameManager.startGame += HandleStartGame;
+        _player.deathEvent += HandlePlayerDead;
     }
 
     private void OnDisable()
     {
         _nextDayButton.onClick.RemoveListener(HandlePassDay);
         _gameManager.startGame -= HandleStartGame;
+        _player.deathEvent -= HandlePlayerDead;
     }
 
     private void HandlePassDay()
@@ -45,11 +48,20 @@ public class GameController : MonoBehaviour
 
     private void HandleStartGame()
     {
+        _currentDay = 1;
         _player.HandleStartGame();
+        StartCoroutine(WaitingStart());
+    }
+
+    private IEnumerator WaitingStart()
+    {
+        yield return new WaitForSeconds(_waitForStart);
+        dayChangeEvent?.Invoke(_currentDay);
     }
 
     private void HandlePlayerDead()
     {
+        Debug.Log("loose");
         winGame?.Invoke(false);
     }
 }

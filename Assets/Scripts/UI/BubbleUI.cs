@@ -9,11 +9,11 @@ public class BubbleUI : MonoBehaviour
 
     public void DesactivateBubble()
     {
-        _imageBubble.fillOrigin = 0;
+        _imageBubble.fillAmount = 0;
     }
 
     public void ActivateBubble()
     {
-        _imageBubble.fillOrigin = 1;
+        _imageBubble.fillAmount = 1;
     }
 }

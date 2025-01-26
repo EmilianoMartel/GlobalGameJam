@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private List<Dialog> _dialogs;
 
     public event Action startGame;
+    public event Action endGame;
 
     public void HandleSpecialEvents(string id)
     {

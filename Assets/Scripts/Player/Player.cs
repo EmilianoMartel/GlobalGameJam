@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
 
     [Space(10)]
     [Header("Player awaits")]
-    [SerializeField] private float _waitForDead = 1.5f;
+    [SerializeField] private float _waitForDead = .5f;
+    [SerializeField] private float _waitForStart = 0.2f;
 
     private int _currentBubbles;
     private int _currentCharisma;
@@ -39,6 +40,19 @@ public class Player : MonoBehaviour
     public void HandleStartGame()
     {
         startGame?.Invoke();
+        _currentBubbles = _maxBubbles;
+        _currentCharisma = _startCharisma;
+        _currentAngry = _startAngry;
+        StartCoroutine(WaitingStart());
+    }
+
+    private IEnumerator WaitingStart()
+    {
+        yield return new WaitForSeconds(_waitForStart);
+
+        bubblesChangeEvent?.Invoke(_currentBubbles);
+        angryChangeEvent?.Invoke(_currentAngry);
+        charismaChangeEvent?.Invoke(_currentCharisma);
     }
 
     public void IncrementBubble()
