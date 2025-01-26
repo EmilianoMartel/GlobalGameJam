@@ -2,5 +2,5 @@ public enum DayEventType
 {
     ACTION,
     DIALOG,
-    ACTION_DIALOG
+    DIALOG_ACTION
 }

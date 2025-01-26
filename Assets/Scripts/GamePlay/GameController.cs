@@ -14,9 +14,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private float _waitForStart = 0.5f;
 
     private int _currentDay = 1;
-    private DayEvent _currenDayEvent;
 
-    public Action<int, Dialog> dayChangeEvent;
+    public Action<int> dayChangeEvent;
     public Action<bool> winGame;
 
     private void OnEnable()
@@ -42,9 +41,8 @@ public class GameController : MonoBehaviour
         }
 
         _currentDay++;
-        var day_dialog = _gameManager.GetCurrentDay(_currentDay);
         _player.DecrementBubble();
-        dayChangeEvent?.Invoke(_currentDay, day_dialog);
+        dayChangeEvent?.Invoke(_currentDay);
     }
 
     private void HandleStartGame()
@@ -57,7 +55,7 @@ public class GameController : MonoBehaviour
     private IEnumerator WaitingStart()
     {
         yield return new WaitForSeconds(_waitForStart);
-        dayChangeEvent?.Invoke(_currentDay, _gameManager.GetCurrentDay(_currentDay) );
+        dayChangeEvent?.Invoke(_currentDay);
     }
 
     private void HandlePlayerDead()

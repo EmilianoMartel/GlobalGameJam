@@ -69,15 +69,15 @@ public class Player : MonoBehaviour
             StartCoroutine(DeadLogic());
     }
 
-    public void ModifyCharisma(int charisma)
+    public void UpdateMoxie(int moxie)
     {
-        _currentCharisma += charisma;
+        _currentCharisma += moxie;
         charismaChangeEvent?.Invoke(_currentCharisma);
     }
 
-    public void ModifyAngry(int angry)
+    public void UpdateHijinks(int hijinks)
     {
-        _currentAngry += angry;
+        _currentAngry += hijinks;
         angryChangeEvent?.Invoke(_currentAngry);
     }
 

@@ -2,74 +2,89 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using GoogleSheetsToUnity;
+using UnityEditor;
+using System.Linq;
 
 public class ConfigManager : MonoBehaviour
 {
-
-    [SerializeField] private DataRetrieve dayData;
     // Configs
-    private int _playerInitialBubbles;
-    private int _daysToWin;
+    private int playerInitialBubbles;
+    private int daysToWin;
 
     // DayEvents
-    private List<DayAction> _actions;
-    private List<Dialog> _dialogs_available;
-    private List<Dialog> _dialogs;
+    private List<DayAction> actions = new();
+    private List<Dialog> dialogs = new();
+    private List<DialogAction> dialogActions = new();
 
     [ContextMenu("SetupConfigData")]
     public void SetupData()
     {
-        // TODO: Replace once connection is implemented
-        //MockStartUp();
-        //FetchFromOnlineResource();
-        CreateDays();
+        FetchFromOnlineResource();
     }
 
-    public int GetPlayerInitialBubbles() { return _playerInitialBubbles; }
-    public int GetDaysToWin() { return _daysToWin; }
-    public List<DayAction> GetActions() { return _actions; }
-    public List<Dialog> GetDialogs() { return _dialogs; }
-
-
-    private void CreateDays(){
-        _playerInitialBubbles = 3;
-        _daysToWin = 10;
-
-        _actions = new()
-        {
-            new(1, "Gain bubble", ActionType.GAIN_BUBBLE),
-            new(2, "Lose bubble", ActionType.LOSE_BUBBLE),
-            new(3, "Gain charisma", ActionType.GAIN_CHARISMA),
-            new(4, "Lose charisma", ActionType.LOSE_CHARISMA),
-            new(5, "Gain chaos", ActionType.GAIN_CHAOS),
-            new(6, "Lose chaos", ActionType.LOSE_CHAOS),
-            new(7, "Do nothing", ActionType.DO_NOTHING)
-        };
-
-        _dialogs_available = new();
-        _dialogs = new();
-
-        foreach ( var day in dayData.days_list ){            
-            var responseAction1 = Enum.Parse<ActionType>(day.ResponseAction1);
-            var responseAction2 = Enum.Parse<ActionType>(day.ResponseAction2);
-            var day_obj = CreateDialog( day.Id, day.Text, responseAction1, responseAction2 );
-            _dialogs_available.Add(day_obj);
-        }
-
-        for (var i = 0; i < _daysToWin; i++){
-            
-            var r = UnityEngine.Random.Range(0, _dialogs_available.Count);
-            var _dialog_type = _dialogs_available[r];
-            Debug.Log(_dialog_type.Text);
-            _dialogs.Add( _dialog_type );
-        }
-    }
-
-    private Dialog CreateDialog(int Id, string Text, ActionType firstActionType, ActionType secondActionType)
+    public int GetPlayerInitialBubbles() { return playerInitialBubbles; }
+    public int GetDaysToWin() { return daysToWin; }
+    public List<DayAction> GetActions() { return actions; }
+    public List<Dialog> GetDialogs() { return dialogs; }
+    
+    private void FetchFromOnlineResource()
     {
-        DialogAction firstAction = new(Id + 1, Text + " - Action 1", firstActionType);
-        DialogAction secondAction = new(Id + 2, Text + " - Action 2", secondActionType);
+        Debug.Log("--- Retrieving data from online resource ---");
+        SpreadsheetManager.Read(new GSTU_Search("1rCXe1TjigvgZ8S4XdGoupylYFF9jDkiTZqf0_bbmas0", "DaysData"), ParseSpreadsheetFile);
+    }
 
-        return new (Id, Text, firstAction, secondAction);
+    private void ParseSpreadsheetFile(GstuSpreadSheet spreadSheetRef)
+    {
+        List<GSTU_Cell> ids = spreadSheetRef.columns["Id"];
+        List<GSTU_Cell> types = spreadSheetRef.columns["Type"];
+        List<GSTU_Cell> texts = spreadSheetRef.columns["Text"];
+        List<GSTU_Cell> actionTypes = spreadSheetRef.columns["ActionType"];
+
+        // TODO: NTH
+        List<GSTU_Cell> amount1 = spreadSheetRef.columns["Amount1"];
+        List<GSTU_Cell> amount2 = spreadSheetRef.columns["Amount2"];
+
+        // Parse file rows to arrays of objects
+        for (int i = 0; i < ids.Count; i++)
+        {
+            if (Enum.TryParse(types[i].value, out DayEventType type)) {
+                CreateDayEventDependingOnType(type, ids[i], texts[i], actionTypes[i]);
+            }
+        }
+
+        // Map DialogActions to Dialogs
+        foreach (Dialog dialog in dialogs) 
+        { 
+            LinkDialogActionsToDialog(dialog);
+        }
+    }
+
+    private void CreateDayEventDependingOnType(DayEventType type, GSTU_Cell cellId, GSTU_Cell cellText, GSTU_Cell cellActionType)
+    {
+        Int32.TryParse(cellId.value, out int id);
+        string text = cellText.value;
+        Enum.TryParse(cellActionType.value, out ActionType actionType);
+
+        if (type == DayEventType.DIALOG)
+        {
+            dialogs.Add(new(id, text, null, null));
+        } else if (type == DayEventType.DIALOG_ACTION)
+        {
+            dialogActions.Add(new(id, text, actionType));
+        } else
+        {
+            DayAction dayAction = new(id, text, actionType);
+            actions.Add(dayAction);
+        }
+    }
+
+    private void LinkDialogActionsToDialog(Dialog dialog)
+    {
+        var dialogActions = this.dialogActions.Where(da => da.Id == dialog.Id);
+
+        dialog.FirstAction = dialogActions.FirstOrDefault();
+        dialog.SecondAction = dialogActions.LastOrDefault();
+
+        this.dialogActions.RemoveAll(da => da.Id == dialog.Id);
     }
 }
