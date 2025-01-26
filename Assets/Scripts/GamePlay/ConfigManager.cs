@@ -48,7 +48,7 @@ public class ConfigManager : MonoBehaviour
 
         _dialogs_available = new();
         _dialogs = new();
-        
+
         foreach ( var day in dayData.days_list ){            
             var responseAction1 = Enum.Parse<ActionType>(day.ResponseAction1);
             var responseAction2 = Enum.Parse<ActionType>(day.ResponseAction2);
@@ -56,7 +56,7 @@ public class ConfigManager : MonoBehaviour
             _dialogs_available.Add(day_obj);
         }
 
-        for (var i = 0; i < 10; i++){
+        for (var i = 0; i < _daysToWin; i++){
             
             var r = UnityEngine.Random.Range(0, _dialogs_available.Count);
             var _dialog_type = _dialogs_available[r];
