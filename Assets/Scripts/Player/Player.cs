@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private ConfigManager _configManager;
+
     [Header("Stats")]
     [SerializeField] private int _maxBubbles = 3;
     [SerializeField] private int _startCharisma = 10;
@@ -39,11 +41,33 @@ public class Player : MonoBehaviour
 
     public void HandleStartGame()
     {
+        SetupInitialData();
         startGame?.Invoke();
         _currentBubbles = _maxBubbles;
         _currentCharisma = _startCharisma;
         _currentAngry = _startAngry;
         StartCoroutine(WaitingStart());
+    }
+
+    private void SetupInitialData()
+    {
+        Debug.Log("Setting up player initial data...");
+        //TODO: Agregar bubbles
+        int configStartMoxie = _configManager.GetPlayerInitialMoxie();
+
+        if (configStartMoxie > 0)
+        {
+            _startCharisma = configStartMoxie;
+        }
+
+        int configStartHijinks = _configManager.GetPlayerInitialHijinks();
+
+        if (configStartMoxie > 0)
+        {
+            _startAngry = configStartHijinks;
+        }
+
+        Debug.Log($"Setup complete. _startCharisma = {_startCharisma}, _startAngry = {_startAngry}");
     }
 
     private IEnumerator WaitingStart()
