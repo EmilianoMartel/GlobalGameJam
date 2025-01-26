@@ -16,8 +16,7 @@ public class ConfigManager : MonoBehaviour
     private List<Dialog> dialogs = new();
     private List<DialogAction> dialogActions = new();
 
-    [ContextMenu("SetupConfigData")]
-    public void SetupData()
+    private void OnEnable()
     {
         FetchFromOnlineResource();
     }

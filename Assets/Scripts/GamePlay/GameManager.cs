@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
         else 
         {
             Debug.Log("Setting up ConfigManager...");
-            configManager.SetupData();
             _playerInitialBubbles = configManager.GetPlayerInitialBubbles();
             _daysToWin = configManager.GetDaysToWin();
             Debug.Log("ConfigManager set up successfully.");
