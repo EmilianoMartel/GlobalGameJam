@@ -44,6 +44,7 @@ public class ConfigManager : MonoBehaviour
         List<GSTU_Cell> types = spreadSheetRef.columns["Type"];
         List<GSTU_Cell> texts = spreadSheetRef.columns["Text"];
         List<GSTU_Cell> actionTypes = spreadSheetRef.columns["ActionType"];
+        List<GSTU_Cell> npcs = spreadSheetRef.columns["NPC"];
 
         // TODO: NTH
         List<GSTU_Cell> amount1 = spreadSheetRef.columns["Amount1"];
@@ -53,7 +54,7 @@ public class ConfigManager : MonoBehaviour
         for (int i = 0; i < ids.Count; i++)
         {
             if (Enum.TryParse(types[i].value, out DayEventType type)) {
-                CreateDayEventDependingOnType(type, ids[i], texts[i], actionTypes[i]);
+                CreateDayEventDependingOnType(type, ids[i], texts[i], actionTypes[i], npcs[i]);
             }
         }
 
@@ -76,15 +77,17 @@ public class ConfigManager : MonoBehaviour
         this.playerInitialHijinks = int.Parse(init_hijinks_data[1].value);
     }
 
-    private void CreateDayEventDependingOnType(DayEventType type, GSTU_Cell cellId, GSTU_Cell cellText, GSTU_Cell cellActionType)
+    private void CreateDayEventDependingOnType(DayEventType type, GSTU_Cell cellId, GSTU_Cell cellText, GSTU_Cell cellActionType, GSTU_Cell npc)
     {
         Int32.TryParse(cellId.value, out int id);
         string text = cellText.value;
         Enum.TryParse(cellActionType.value, out ActionType actionType);
 
+        Debug.Log(id + text + npc.value);
+
         if (type == DayEventType.DIALOG)
         {
-            dialogs.Add(new(id, text, null, null));
+            dialogs.Add(new(id, text, null, null, npc.value) );
         } else if (type == DayEventType.DIALOG_ACTION)
         {
             dialogActions.Add(new(id, text, actionType));

@@ -22,7 +22,7 @@ public class VolumeSettings : MonoBehaviour
     {
 
         float volume = _master.value;
-        Debug.Log("aca bolu " + volume);
+        //Debug.Log("aca bolu " + volume);
         _mixer.SetFloat(_type, Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat(_type, volume);
     }
