@@ -19,6 +19,11 @@ public class DayManager : MonoBehaviour
 
     public Action<DayEvent> eventChange;
 
+    private void Start()
+    {
+        _gameController.dayChangeEvent += PassDay;
+    }
+
     private void OnEnable()
     {
         if (_configManager == null)
@@ -30,8 +35,6 @@ public class DayManager : MonoBehaviour
             actions = _configManager.GetActions();
             dialogs = _configManager.GetDialogs();
         }
-
-        _gameController.dayChangeEvent += PassDay;
     }
 
     private void OnDisable()
@@ -43,6 +46,7 @@ public class DayManager : MonoBehaviour
     {
         // TODO: Add check for special event
         DayAction actionToTrigger = getRandomAction();
+        ApplyActionTypeEffect(actionToTrigger.ActionType);
 
         eventChange?.Invoke(actionToTrigger);
     }
@@ -82,6 +86,8 @@ public class DayManager : MonoBehaviour
 
     public void ApplyActionTypeEffect(ActionType actionType)
     {
+        Debug.Log($"ApplyActionTypeEffect triggered: {actionType}");
+
         switch(actionType)
         {
             case ActionType.GAIN_BUBBLE:

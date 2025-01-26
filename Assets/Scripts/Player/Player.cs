@@ -72,12 +72,20 @@ public class Player : MonoBehaviour
     public void UpdateMoxie(int moxie)
     {
         _currentCharisma += moxie;
+
+        if (_currentCharisma <= 0)
+            _currentCharisma = 0;
+
         charismaChangeEvent?.Invoke(_currentCharisma);
     }
 
     public void UpdateHijinks(int hijinks)
     {
         _currentAngry += hijinks;
+
+        if (_currentAngry <= 0)
+            _currentAngry = 0;
+
         angryChangeEvent?.Invoke(_currentAngry);
     }
 
