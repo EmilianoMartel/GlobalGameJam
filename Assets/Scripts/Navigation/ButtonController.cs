@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class ButtonController : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private SoundSFCSourcer _soundSFCSourcer;
+
     private string _id;
     private Button _button;
 
@@ -36,6 +39,7 @@ public class ButtonController : MonoBehaviour
 
     private void HandleButtonClick()
     {
+        _soundSFCSourcer.SoundManager.PlayAudio(clip);
         OnClick?.Invoke(_id);
     }
 }
