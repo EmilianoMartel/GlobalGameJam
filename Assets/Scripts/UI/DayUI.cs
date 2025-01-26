@@ -48,6 +48,9 @@ public class DayUI : MonoBehaviour
             _optionAButton.GetComponentInChildren<TMP_Text>().text = dialog.FirstAction.Text;
             _optionAButton.onClick.AddListener(() => { 
                 _dayManager.ApplyActionTypeEffect(dialog.FirstAction.ActionType);
+                // TODO: Agregar llamada a método que muestre pop-up con el resultado
+                string popUpText = dialog.FirstAction.ActionType.GetAttribute<ActionTypeNameAttribute>().Name;
+
                 ToggleOptionButtons();
                 RemoveListeners();
             });
