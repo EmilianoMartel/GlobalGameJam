@@ -967,9 +967,9 @@ RectTransform:
   - {fileID: 636609398}
   m_Father: {fileID: 495629905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 477.10004, y: -23.0635}
   m_SizeDelta: {x: 10.1449, y: 34.7299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288045723
@@ -3825,9 +3825,9 @@ RectTransform:
   - {fileID: 170052425}
   m_Father: {fileID: 495629905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 795.1667, y: -23.0635}
   m_SizeDelta: {x: 10.1449, y: 34.7299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981389809
@@ -5490,9 +5490,9 @@ RectTransform:
   - {fileID: 844871751}
   m_Father: {fileID: 495629905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 159.03334, y: -23.0635}
   m_SizeDelta: {x: 10.1449, y: 34.7299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570740417
@@ -5989,9 +5989,9 @@ RectTransform:
   - {fileID: 1861057230}
   m_Father: {fileID: 692022132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 554.5, y: -87.00604}
   m_SizeDelta: {x: 196.3699, y: 37.2905}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1743372395
@@ -6528,6 +6528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1837673993}
   - component: {fileID: 1837673992}
+  - component: {fileID: 1837673994}
   m_Layer: 0
   m_Name: ConfigManager
   m_TagString: Untagged
@@ -6548,6 +6549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayData: {fileID: 11400000, guid: 3a6029e370942124b9f58de6213b8e59, type: 2}
+  dayFactory: {fileID: 1837673994}
 --- !u!4 &1837673993
 Transform:
   m_ObjectHideFlags: 0
@@ -6563,6 +6565,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1837673994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837673991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa6c86c83d760345b4d3b5c6dc605d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852363471
 GameObject:
   m_ObjectHideFlags: 0
