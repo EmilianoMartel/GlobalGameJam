@@ -4722,9 +4722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8ec43fc90880d448e8fe77493a8e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxBubbles: 3
-  _startCharisma: 10
-  _startAngry: 10
+  configManager: {fileID: 1837673992}
   _waitForDead: 1.5
   _waitForStart: 0.5
 --- !u!4 &1259506500
@@ -6547,7 +6545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dad664ffcb5e06458527d416a7ac978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayData: {fileID: 11400000, guid: 3a6029e370942124b9f58de6213b8e59, type: 2}
 --- !u!4 &1837673993
 Transform:
   m_ObjectHideFlags: 0
