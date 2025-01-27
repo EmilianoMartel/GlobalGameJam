@@ -6300,7 +6300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8ec43fc90880d448e8fe77493a8e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configManager: {fileID: 1975137397}
+  _configManager: {fileID: 1975137397}
+  _maxBubbles: 3
+  _startCharisma: 10
+  _startAngry: 10
   _waitForDead: 1.5
   _waitForStart: 0.5
 --- !u!4 &1259506500
@@ -6426,10 +6429,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1689130145}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299017710
 MonoBehaviour:
@@ -7791,7 +7794,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playId: Play
   exitId: Exit
-  configManager: {fileID: 1975137397}
 --- !u!4 &1664419467
 Transform:
   m_ObjectHideFlags: 0
@@ -7839,10 +7841,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1213423418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672742007
 MonoBehaviour:
@@ -8254,10 +8256,10 @@ RectTransform:
   - {fileID: 1861057230}
   m_Father: {fileID: 1075280497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 4.7821045, y: -2.6890106}
-  m_SizeDelta: {x: -45.798, y: -230.909}
+  m_SizeDelta: {x: -45.798, y: 277.091}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1743372395
 MonoBehaviour:
@@ -9237,6 +9239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextDayButton: {fileID: 282342568}
   _gameManager: {fileID: 1664419466}
+  _configManager: {fileID: 1975137397}
   _player: {fileID: 1259506499}
   _maxDay: 10
   _waitForStart: 0.5

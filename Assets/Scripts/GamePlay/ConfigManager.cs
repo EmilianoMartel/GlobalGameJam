@@ -8,6 +8,7 @@ using System.Linq;
 public class ConfigManager : MonoBehaviour
 {
     // Configs
+    private int daysToWin;
     private int playerInitialBubbles;
     private int playerInitialMoxie;
     private int playerInitialHijinks;
@@ -18,11 +19,12 @@ public class ConfigManager : MonoBehaviour
     private List<Dialog> dialogs = new();
     private List<DialogAction> dialogActions = new();
 
-    private void OnEnable()
+    private void Awake()
     {
         FetchFromOnlineResource();
     }
 
+    public int GetDaysToWin() { return daysToWin; }
     public int GetPlayerInitialBubbles() { return playerInitialBubbles; }
     public int GetDaysToWin() { return daysToWin; }
     public int GetPlayerInitialMoxie() { return playerInitialMoxie; }
@@ -106,5 +108,18 @@ public class ConfigManager : MonoBehaviour
         dialog.SecondAction = dialogActions.LastOrDefault();
 
         this.dialogActions.RemoveAll(da => da.Id == dialog.Id);
+    }
+
+    private void ParseStartupConfig(GstuSpreadSheet spreadSheetRef)
+    {
+        List<GSTU_Cell> daysToWinCell = spreadSheetRef.columns["DAYS_TO_WIN"];
+        List<GSTU_Cell> initialBubblesCell = spreadSheetRef.columns["INITIAL_BUBBLES"];
+        List<GSTU_Cell> initialMoxieCell = spreadSheetRef.columns["INITIAL_MOXIE"];
+        List<GSTU_Cell> initialHijinksCell = spreadSheetRef.columns["INITIAL_HIJINKS"];
+
+        Int32.TryParse(daysToWinCell[1].value, out daysToWin);
+        Int32.TryParse(initialBubblesCell[1].value, out playerInitialBubbles);
+        Int32.TryParse(initialMoxieCell[1].value, out playerInitialMoxie);
+        Int32.TryParse(initialHijinksCell[1].value, out playerInitialHijinks);
     }
 }
