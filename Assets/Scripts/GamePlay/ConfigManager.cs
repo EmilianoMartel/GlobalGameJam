@@ -12,7 +12,6 @@ public class ConfigManager : MonoBehaviour
     private int playerInitialBubbles;
     private int playerInitialMoxie;
     private int playerInitialHijinks;
-    private int daysToWin;
 
     // DayEvents
     private List<DayAction> actions = new();
@@ -26,7 +25,6 @@ public class ConfigManager : MonoBehaviour
 
     public int GetDaysToWin() { return daysToWin; }
     public int GetPlayerInitialBubbles() { return playerInitialBubbles; }
-    public int GetDaysToWin() { return daysToWin; }
     public int GetPlayerInitialMoxie() { return playerInitialMoxie; }
     public int GetPlayerInitialHijinks() { return playerInitialHijinks; }
     public List<DayAction> GetActions() { return actions; }

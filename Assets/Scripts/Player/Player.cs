@@ -12,9 +12,6 @@ public class Player : MonoBehaviour
     private int _startCharisma = 10;
     private int _startAngry = 10;
 
-
-    [SerializeField] private ConfigManager configManager;
-
     [Space(10)]
     [Header("Player awaits")]
     [SerializeField] private float _waitForDead = .5f;
@@ -77,9 +74,9 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(_waitForStart);
 
         // lo tuve que poner aca por que en HandleStartGame todavía estan los valores default
-        _currentBubbles = configManager.GetPlayerInitialBubbles();
-        _currentCharisma = configManager.GetPlayerInitialMoxie();
-        _currentAngry = configManager.GetPlayerInitialHijinks();
+        _currentBubbles = _configManager.GetPlayerInitialBubbles();
+        _currentCharisma = _configManager.GetPlayerInitialMoxie();
+        _currentAngry = _configManager.GetPlayerInitialHijinks();
 
      
         Debug.Log( "PLAYER WAITING START" );

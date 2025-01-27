@@ -4,45 +4,69 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour
 {
-
     [SerializeField] private List<GameObject> _npcs;
-    [SerializeField] private Vector2 exit;
-    [SerializeField] private Vector2 enter;
+    [SerializeField] private Transform exit;
+    [SerializeField] private Transform enter;
+    [SerializeField] private float _speed = 1.5f;
 
-    private bool is_showing = false;
-    private float counter = 0;
+    private Coroutine currentCoroutine;
+    private int _currentID;
 
-    void Start(){
-
+    private void Start()
+    {
+        HideAll();
     }
 
-    void Update(){
+    public void ShowNPC(int id)
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        _currentID = id;
+        currentCoroutine = StartCoroutine(MoveNPC(_npcs[id], exit.position, enter.position, true));
+    }
 
-        counter += Time.deltaTime;;
+    public void HideNPC()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
 
-        if ( is_showing ){
-            transform.position = Vector2.Lerp( exit, enter, counter);
-        }else {
-            transform.position = Vector2.Lerp( enter, exit, counter);
+        for (int i = 0; i < _npcs.Count; i++)
+        {
+            if(_currentID == i)
+            {
+                currentCoroutine = StartCoroutine(MoveNPC(_npcs[i], enter.position, exit.position, false));
+            }
         }
     }
-    
-    public void ShowNPC(int id){
-        HideAll();
-        counter = 0.3f;
-        is_showing = true;
-        _npcs[id].transform.localScale = Vector2.one;
+
+    private IEnumerator MoveNPC(GameObject npc, Vector3 from, Vector3 to, bool show)
+    {
+        npc.gameObject.SetActive(true);
+
+        float counter = 0;
+
+        while (counter < 1)
+        {
+            counter += Time.deltaTime * _speed;
+            npc.transform.position = Vector3.Lerp(from, to, counter);
+            yield return null;
+        }
+
+        npc.transform.position = to;
+
+        if (!show) npc.transform.localScale = Vector2.zero;
     }
 
-    public void HideNPC(){
-        counter = 0;
-        is_showing = false;
-
-    }
-
-    private void HideAll(){
-        foreach ( var npc in _npcs){
-            npc.transform.localScale = Vector2.zero;
+    private void HideAll()
+    {
+        foreach (var npc in _npcs)
+        {
+            npc.gameObject.SetActive(false);
+            npc.transform.position = exit.position;
         }
     }
 }
