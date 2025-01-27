@@ -72,6 +72,7 @@ public class DayManager : MonoBehaviour
     {
         int randomEvent = UnityEngine.Random.Range(0, dialogs.Count);
 
+        Debug.Log(dialogs.Count);
         return dialogs[randomEvent];
     }
 

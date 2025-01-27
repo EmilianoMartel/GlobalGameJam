@@ -32,7 +32,11 @@ public class SFXSoundManager : MonoBehaviour
 
     private void LoadVolume()
     {
-        float volumen = 1;
+        float volumen = PlayerPrefs.GetFloat(_type);
         _mixer.SetFloat(_type, Mathf.Log10(volumen) * 20);
+        volumen = PlayerPrefs.GetFloat("Music");
+        _mixer.SetFloat("Music", Mathf.Log10(volumen) * 20);
+        volumen = PlayerPrefs.GetFloat("SFX");
+        _mixer.SetFloat("SFX", Mathf.Log10(volumen) * 20);
     }
 }

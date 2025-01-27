@@ -17,6 +17,8 @@ public class DayUI : MonoBehaviour
     [SerializeField] private Button _optionBButton;
     [SerializeField] private Button _nextDayButton;
 
+    [SerializeField] private NPCController npcController;
+
     private void OnEnable()
     {
         _gameController.dayChangeEvent += ChangeDayNumber;
@@ -48,6 +50,12 @@ public class DayUI : MonoBehaviour
             _optionAButton.GetComponentInChildren<TMP_Text>().text = dialog.FirstAction.Text;
             _optionAButton.onClick.AddListener(() => { 
                 _dayManager.ApplyActionTypeEffect(dialog.FirstAction.ActionType);
+                // TODO: Agregar llamada a método que muestre pop-up con el resultado
+                string popUpText = dialog.FirstAction.ActionType.GetAttribute<ActionTypeNameAttribute>().Name;
+                _dayEventText.text = popUpText;
+
+                npcController.HideNPC( );
+
                 ToggleOptionButtons();
                 RemoveListeners();
             });
@@ -56,10 +64,18 @@ public class DayUI : MonoBehaviour
             _optionBButton.GetComponentInChildren<TMP_Text>().text = dialog.SecondAction.Text;
             _optionBButton.onClick.AddListener(() => { 
                 _dayManager.ApplyActionTypeEffect(dialog.SecondAction.ActionType);
+                string popUpText = dialog.SecondAction.ActionType.GetAttribute<ActionTypeNameAttribute>().Name;
+                _dayEventText.text = popUpText;
+
+                npcController.HideNPC( );
                 ToggleOptionButtons();
                 RemoveListeners();
             });
+
+            npcController.ShowNPC(  dialog.NPC_ID );
         }
+
+        
     }
 
     private void ToggleOptionButtons()
