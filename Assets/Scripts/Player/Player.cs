@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private ConfigManager _configManager;
+    [SerializeField] private ConfigData _configData;
 
     [Header("Stats")]
     private int _maxBubbles = 3;
@@ -31,20 +32,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _currentBubbles = _maxBubbles;
-        _currentCharisma = _startCharisma;
-        _currentAngry = _startAngry;
-
-        bubblesChangeEvent?.Invoke(_currentBubbles);
-        angryChangeEvent?.Invoke(_currentAngry);
-        charismaChangeEvent?.Invoke(_currentCharisma);
+        SetupInitialData();
     }
 
     public void HandleStartGame()
     {
-        SetupInitialData();
-        startGame?.Invoke();
-
         StartCoroutine(WaitingStart());
     }
 
@@ -52,32 +44,42 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Setting up player initial data...");
         //TODO: Agregar bubbles
-        int configStartMoxie = _configManager.GetPlayerInitialMoxie();
-
-        if (configStartMoxie > 0)
+        if (_configManager.GetPlayerInitialBubbles() != 0)
         {
-            _startCharisma = configStartMoxie;
+            int configStartMoxie = _configManager.GetPlayerInitialMoxie();
+
+            if (configStartMoxie > 0)
+            {
+                _startCharisma = configStartMoxie;
+            }
+
+            int configStartHijinks = _configManager.GetPlayerInitialHijinks();
+
+            if (configStartMoxie > 0)
+            {
+                _startAngry = configStartHijinks;
+            }
+
+            _maxBubbles = _configManager.GetPlayerInitialBubbles();
+        }
+        else
+        {
+            _startCharisma = _configData.playerInitialMoxie;
+            _startAngry = _configData.playerInitialHijinks;
+            _maxBubbles = _configData.playerInitialBubbles;
         }
 
-        int configStartHijinks = _configManager.GetPlayerInitialHijinks();
-
-        if (configStartMoxie > 0)
-        {
-            _startAngry = configStartHijinks;
-        }
 
         Debug.Log($"Setup complete. _startCharisma = {_startCharisma}, _startAngry = {_startAngry}");
     }
 
     private IEnumerator WaitingStart()
     {
+        startGame?.Invoke();
+        _currentAngry = _startAngry;
+        _currentBubbles = _maxBubbles;
+        _currentCharisma = _startCharisma;
         yield return new WaitForSeconds(_waitForStart);
-
-        // lo tuve que poner aca por que en HandleStartGame todavía estan los valores default
-        _currentBubbles = _configManager.GetPlayerInitialBubbles();
-        _currentCharisma = _configManager.GetPlayerInitialMoxie();
-        _currentAngry = _configManager.GetPlayerInitialHijinks();
-
      
         Debug.Log( "PLAYER WAITING START" );
 

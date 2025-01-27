@@ -8,15 +8,17 @@ using System.Linq;
 public class ConfigManager : MonoBehaviour
 {
     // Configs
-    private int daysToWin;
-    private int playerInitialBubbles;
-    private int playerInitialMoxie;
-    private int playerInitialHijinks;
+    private int daysToWin = 0;
+    private int playerInitialBubbles = 0;
+    private int playerInitialMoxie = 0;
+    private int playerInitialHijinks = 0;
 
     // DayEvents
     private List<DayAction> actions = new();
     private List<Dialog> dialogs = new();
     private List<DialogAction> dialogActions = new();
+
+    [SerializeField] private ConfigData _configData;
 
     private void Awake()
     {
@@ -29,13 +31,14 @@ public class ConfigManager : MonoBehaviour
     public int GetPlayerInitialHijinks() { return playerInitialHijinks; }
     public List<DayAction> GetActions() { return actions; }
     public List<Dialog> GetDialogs() { return dialogs; }
-    
+
     private void FetchFromOnlineResource()
     {
         Debug.Log("--- Retrieving data from online resource ---");
         SpreadsheetManager.Read(new GSTU_Search("1rCXe1TjigvgZ8S4XdGoupylYFF9jDkiTZqf0_bbmas0", "DaysData"), ParseSpreadsheetDayData);
-
+        
         SpreadsheetManager.Read(new GSTU_Search("1rCXe1TjigvgZ8S4XdGoupylYFF9jDkiTZqf0_bbmas0", "PlayerData"), ParseSpreadsheetPlayerData);
+
     }
 
     private void ParseSpreadsheetDayData(GstuSpreadSheet spreadSheetRef)
@@ -53,19 +56,25 @@ public class ConfigManager : MonoBehaviour
         // Parse file rows to arrays of objects
         for (int i = 0; i < ids.Count; i++)
         {
-            if (Enum.TryParse(types[i].value, out DayEventType type)) {
+            if (Enum.TryParse(types[i].value, out DayEventType type))
+            {
                 CreateDayEventDependingOnType(type, ids[i], texts[i], actionTypes[i], npcs[i]);
             }
         }
 
         // Map DialogActions to Dialogs
-        foreach (Dialog dialog in dialogs) 
-        { 
+        foreach (Dialog dialog in dialogs)
+        {
             LinkDialogActionsToDialog(dialog);
         }
+
+        _configData.dialogs = dialogs;
+        _configData.actions = actions;
+        _configData.dialogActions = dialogActions;
     }
 
-    private void ParseSpreadsheetPlayerData(GstuSpreadSheet spreadSheetRef) {
+    private void ParseSpreadsheetPlayerData(GstuSpreadSheet spreadSheetRef)
+    {
         List<GSTU_Cell> daysToWin_data = spreadSheetRef.columns["DAYS_TO_WIN"];
         List<GSTU_Cell> init_bubbles_data = spreadSheetRef.columns["INITIAL_BUBBLES"];
         List<GSTU_Cell> init_moxie_data = spreadSheetRef.columns["INITIAL_MOXIE"];
@@ -75,6 +84,11 @@ public class ConfigManager : MonoBehaviour
         this.playerInitialBubbles = int.Parse(init_bubbles_data[1].value);
         this.playerInitialMoxie = int.Parse(init_moxie_data[1].value);
         this.playerInitialHijinks = int.Parse(init_hijinks_data[1].value);
+
+        _configData.daysToWin = daysToWin;
+        _configData.playerInitialMoxie = playerInitialMoxie;
+        _configData.playerInitialHijinks = playerInitialHijinks;
+        _configData.playerInitialBubbles = playerInitialBubbles;
     }
 
     private void CreateDayEventDependingOnType(DayEventType type, GSTU_Cell cellId, GSTU_Cell cellText, GSTU_Cell cellActionType, GSTU_Cell npc)
@@ -87,11 +101,13 @@ public class ConfigManager : MonoBehaviour
 
         if (type == DayEventType.DIALOG)
         {
-            dialogs.Add(new(id, text, null, null, npc.value) );
-        } else if (type == DayEventType.DIALOG_ACTION)
+            dialogs.Add(new(id, text, null, null, npc.value));
+        }
+        else if (type == DayEventType.DIALOG_ACTION)
         {
             dialogActions.Add(new(id, text, actionType));
-        } else
+        }
+        else
         {
             DayAction dayAction = new(id, text, actionType);
             actions.Add(dayAction);

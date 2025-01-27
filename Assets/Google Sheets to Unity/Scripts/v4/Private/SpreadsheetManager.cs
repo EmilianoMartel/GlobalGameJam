@@ -64,7 +64,7 @@ namespace GoogleSheetsToUnity
             }
 #endif
         }
-        
+
         /// <summary>
         /// Reads the spread sheet and callback with the results
         /// </summary>

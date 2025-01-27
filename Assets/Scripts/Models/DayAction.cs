@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class DayAction : DayEvent
 {
     public ActionType ActionType { get; set; }

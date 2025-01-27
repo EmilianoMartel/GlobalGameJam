@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class DialogAction : DayEvent
 {
     public ActionType ActionType { get; set; }

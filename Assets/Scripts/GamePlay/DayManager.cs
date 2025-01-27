@@ -15,6 +15,8 @@ public class DayManager : MonoBehaviour
     // Player
     [SerializeField] private Player _player;
 
+    [SerializeField] private ConfigData _days;
+
     private List<DayAction> actions = new();
     private List<Dialog> dialogs = new();
 
@@ -23,6 +25,7 @@ public class DayManager : MonoBehaviour
     private void Start()
     {
         _gameController.dayChangeEvent += PassDay;
+        StartCoroutine(WaitForConfig());
     }
 
     private void OnEnable()
@@ -31,11 +34,7 @@ public class DayManager : MonoBehaviour
         {
             Debug.LogWarning($"{name}: ConfigManager not set up");
         }
-        else
-        {
-            actions = _configManager.GetActions();
-            dialogs = _configManager.GetDialogs();
-        }
+
     }
 
     private void OnDisable()
@@ -158,6 +157,21 @@ public class DayManager : MonoBehaviour
 
             default:
                 break;
+        }
+    }
+
+    private IEnumerator WaitForConfig()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (_configManager.GetActions().Count > 0)
+        {
+            actions = _configManager.GetActions();
+            dialogs = _configManager.GetDialogs();
+        }
+        else
+        {
+            actions = _days.actions;
+            dialogs = _days.dialogs;
         }
     }
 }

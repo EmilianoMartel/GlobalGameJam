@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+[Serializable]
 public class Dialog : DayEvent
 {
     public DialogAction FirstAction { get; set; }
