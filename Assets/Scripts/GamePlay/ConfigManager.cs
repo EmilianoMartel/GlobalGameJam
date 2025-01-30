@@ -99,17 +99,25 @@ public class ConfigManager : MonoBehaviour
 
         Debug.Log(id + text + npc.value);
 
+        // Si el tipo es DIALOG
         if (type == DayEventType.DIALOG)
         {
-            dialogs.Add(new(id, text, null, null, npc.value));
+            Dialog dialog = new Dialog();
+            dialog.Initialize(id, text, null, null, npc.value);
+            dialogs.Add(dialog);
         }
+        // Si el tipo es DIALOG_ACTION
         else if (type == DayEventType.DIALOG_ACTION)
         {
-            dialogActions.Add(new(id, text, actionType));
+            DialogAction dialogAction = new DialogAction();
+            dialogAction.Initialize(id, text, actionType);  // Correctamente usando Initialize
+            dialogActions.Add(dialogAction);
         }
+        // Para otros tipos, creamos DayAction
         else
         {
-            DayAction dayAction = new(id, text, actionType);
+            DayAction dayAction = new DayAction();
+            dayAction.Initialize(id, text, actionType);  // Correctamente usando Initialize
             actions.Add(dayAction);
         }
     }

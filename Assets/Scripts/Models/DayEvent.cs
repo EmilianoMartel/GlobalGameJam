@@ -1,13 +1,21 @@
+using System;
+using UnityEngine;
+
+[Serializable]
 public class DayEvent
 {
-    public int Id { get; protected set; }
-    public DayEventType Type { get; protected set; }
-    public string Text { get; protected set; }
+    [SerializeField] protected int id;
+    [SerializeField] protected DayEventType type;
+    [SerializeField] protected string text;
 
-    public DayEvent(int Id, DayEventType Type, string Text)
+    public int Id => id;
+    public DayEventType Type => type;
+    public string Text => text;
+
+    public void Initialize(int id, DayEventType type, string text)
     {
-        this.Id = Id;
-        this.Type = Type;
-        this.Text = Text;
+        this.id = id;
+        this.type = type;
+        this.text = text;
     }
 }

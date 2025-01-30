@@ -32,11 +32,14 @@ public class SFXSoundManager : MonoBehaviour
 
     private void LoadVolume()
     {
+#if UNITY_WEBGL
+#else
         float volumen = PlayerPrefs.GetFloat(_type);
         _mixer.SetFloat(_type, Mathf.Log10(volumen) * 20);
         volumen = PlayerPrefs.GetFloat("Music");
         _mixer.SetFloat("Music", Mathf.Log10(volumen) * 20);
         volumen = PlayerPrefs.GetFloat("SFX");
         _mixer.SetFloat("SFX", Mathf.Log10(volumen) * 20);
+#endif
     }
 }

@@ -34,4 +34,9 @@ public class GameManager : MonoBehaviour
     {
         startGame?.Invoke();
     }
+
+    public void EndGame()
+    {
+        endGame?.Invoke();
+    }
 }

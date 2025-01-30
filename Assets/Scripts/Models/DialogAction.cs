@@ -1,12 +1,16 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class DialogAction : DayEvent
 {
-    public ActionType ActionType { get; set; }
+    [SerializeField] private ActionType actionType;
 
-    public DialogAction(int Id, string Text, ActionType ActionType) : base(Id, DayEventType.DIALOG_ACTION, Text)
+    public ActionType ActionType => actionType;
+
+    public void Initialize(int id, string text, ActionType actionType)
     {
-        this.ActionType = ActionType;
+        base.Initialize(id, DayEventType.DIALOG_ACTION, text);
+        this.actionType = actionType;
     }
 }

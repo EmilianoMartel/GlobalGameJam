@@ -49,9 +49,14 @@ public class GameController : MonoBehaviour
         {
             winGame?.Invoke(true);
             Debug.Log("win");
+            _gameManager.EndGame();
         } else
         {
             _currentDay++;
+            if (_currentDay % 5 == 0)
+            {
+                _player.DecrementBubble();
+            }
             dayChangeEvent?.Invoke(_currentDay);
         }
     }
@@ -73,6 +78,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("loose");
         winGame?.Invoke(false);
+        _gameManager.EndGame();
     }
 
     private void ResetStatus()
